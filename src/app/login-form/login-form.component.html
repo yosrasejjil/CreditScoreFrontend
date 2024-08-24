@@ -1,0 +1,93 @@
+<div class="wrapper">
+	<div class="container">
+		<div class="col-left">
+			<div class="login-text">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget eros dapibus, ultricies tellus
+					vitae, consectetur tortor. Etiam rutrum placerat
+				</p>
+				<ul class="nav" id="ex1" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="btn" [ngClass]="active === 'login' ? 'nav-link active' : 'nav-link'"
+							id="tab-login" (click)="onLoginTab()">Login</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="btn" [ngClass]="active === 'register' ? 'nav-link active' : 'nav-link'"
+							id="tab-register" (click)="onRegisterTab()">Register</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-right">
+			<div class="login-form">
+
+
+
+				<div class="row justify-content-center">
+					<div class="col-4">
+						<div class="tab-content">
+							<div [ngClass]="active === 'login' ? 'tab-pane fade show active' : 'tab-pane fade'">
+								<form (ngSubmit)="onLogin()">
+									<div class="form-outline mb-4">
+										<input type="text" id="loginName" name="login" class="form-control"
+											[(ngModel)]="login" />
+										<label class="form-label" for="loginName">Username</label>
+									</div>
+									<div class="form-outline mb-4">
+										<input type="password" id="loginPassword" name="password" class="form-control"
+											[(ngModel)]="password" />
+										<label class="form-label" for="loginPassword">Password</label>
+									</div>
+									<button class="btn btn-success" type="submit" >Sign in</button>
+								</form>
+							</div>
+
+							<div [ngClass]="active === 'register' ? 'tab-pane fade show active' : 'tab-pane fade'">
+								<form (ngSubmit)="onRegister()">
+									<div class="form-outline mb-4">
+										<input type="text" id="firstName" name="firstName" class="form-control"
+											[(ngModel)]="firstName" />
+										<label class="form-label" for="firstName">First name</label>
+									</div>
+									<div class="form-outline mb-4">
+										<input type="text" id="lastName" name="lastName" class="form-control"
+											[(ngModel)]="lastName" />
+										<label class="form-label" for="lastName">Last name</label>
+									</div>
+									<!--  <div class="form-outline mb-4">
+						<input type="text" id="companyname" name="companyname" class="form-control" [(ngModel)]="companyname" />
+						<label class="form-label" for="companyname">company name</label>
+					  </div><div class="form-outline mb-4">
+						<input type="number" id="cik" name="cik" class="form-control" [(ngModel)]="cik" />
+						<label class="form-label" for="cik">cik</label>
+					  </div>
+					  <div class="form-outline mb-4">
+						<input type="text" id="ticker" name="ticker" class="form-control" [(ngModel)]="ticker" />
+						<label class="form-label" for="ticker">ticker</label>
+					  </div>-->
+
+									<div class="form-outline mb-4">
+										<input type="text" id="login" name="login" class="form-control"
+											[(ngModel)]="login" />
+										<label class="form-label" for="login">Username</label>
+									</div>
+									<div class="form-outline mb-4">
+										<input type="password" id="registerPassword" name="password"
+											class="form-control" [(ngModel)]="password" />
+										<label class="form-label" for="registerPassword">Password</label>
+									</div>
+									<button class="btn btn-success" type="submit" >Register</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>

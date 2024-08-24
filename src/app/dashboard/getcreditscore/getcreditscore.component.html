@@ -1,0 +1,321 @@
+<div class="content-body">
+    <div class="container-fluid">
+      <!-- Add Project -->
+      <div class="col-md-12">
+        <div class="card" style="display: grid; align-content: center;">
+          <div class="card-body text-center ai-icon  text-primary">
+            <div class="container my-5">
+           
+              
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <!-- Step 1: Balance Sheet -->
+                <mat-step [stepControl]="balanceSheetFormGroup">
+                  <form [formGroup]="balanceSheetFormGroup">
+                    <ng-template matStepLabel>Balance Sheet</ng-template>
+              
+                    <!-- Current Assets -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Current Assets</mat-label>
+                      <input matInput type="number" formControlName="currentAssets" placeholder="Current Assets" required>
+                    
+                    </mat-form-field>
+              
+                    <!-- Current Liabilities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Current Liabilities</mat-label>
+                      <input matInput type="number" formControlName="currentLiabilities" placeholder="Current Liabilities" required>
+                  
+                    </mat-form-field>
+              
+                    <!-- Stockholder Equity -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Stockholder Equity</mat-label>
+                      <input matInput type="number" formControlName="stockholderEquity" placeholder="Stockholder Equity" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Liabilities And Stockholder Equity -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Liabilities And Stockholder Equity</mat-label>
+                      <input matInput type="number" formControlName="liabilitiesAndStockholderEquity"
+                        placeholder="Liabilities And Stockholder Equity" required>
+                      
+                    </mat-form-field>
+                    <!-- Retained Earnings -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Retained Earnings</mat-label>
+                      <input matInput type="number" formControlName="retainedEarnings" placeholder="Retained Earnings" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Working Capital -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Working Capital</mat-label>
+                      <input matInput type="number" formControlName="workingCapital" placeholder="Working Capital" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Liabilities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Liabilities</mat-label>
+                      <input matInput type="number" formControlName="liabilities" placeholder="Liabilities" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Cash -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Cash</mat-label>
+                      <input matInput type="number" formControlName="cash" placeholder="Cash" required>
+                  
+                    </mat-form-field>
+              
+                    <!-- Accounts Receivable -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Accounts Receivable</mat-label>
+                      <input matInput type="number" formControlName="accountsReceivable" placeholder="Accounts Receivable" required>
+                    
+                    </mat-form-field>
+              
+                    <!-- Inventory -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Inventory</mat-label>
+                      <input matInput type="number" formControlName="inventory" placeholder="Inventory" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Current Other Assets -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Current Other Assets</mat-label>
+                      <input matInput type="number" formControlName="currentOtherAssets" placeholder="Current Other Assets" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Noncurrent Assets -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Noncurrent Assets</mat-label>
+                      <input matInput type="number" formControlName="noncurrentAssets" placeholder="Noncurrent Assets" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Intangible Assets -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Intangible Assets</mat-label>
+                      <input matInput type="number" formControlName="intangibleAssets" placeholder="Intangible Assets" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Accounts Payable -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Accounts Payable</mat-label>
+                      <input matInput type="number" formControlName="accountsPayable" placeholder="Accounts Payable" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Short Term Debt -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Short Term Debt</mat-label>
+                      <input matInput type="number" formControlName="shortTermDebt" placeholder="Short Term Debt" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Long Term Debt -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Long Term Debt</mat-label>
+                      <input matInput type="number" formControlName="longTermDebt" placeholder="Long Term Debt" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Noncurrent Liabilities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Noncurrent Liabilities</mat-label>
+                      <input matInput type="number" formControlName="noncurrentLiabilities" placeholder="Noncurrent Liabilities"
+                        required>
+                      
+                    </mat-form-field>
+              
+                    <div>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+              
+              
+                <!-- Step 2: Income Statement (formerly Step 3) -->
+                <mat-step [stepControl]="incomeStatementFormGroup">
+                  <form [formGroup]="incomeStatementFormGroup">
+                    <ng-template matStepLabel>Income Statement</ng-template>
+              
+                    <!-- Earnings Before Interest and Taxes -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Earnings Before Interest and Taxes</mat-label>
+                      <input matInput type="number" formControlName="earningBeforeInterestAndTaxes"
+                        placeholder="Earnings Before Interest and Taxes" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Revenues -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Revenues</mat-label>
+                      <input matInput type="number" formControlName="revenues" placeholder="Revenues" required>
+                     
+                    </mat-form-field>
+              
+                    <!-- Net Income -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Net Income</mat-label>
+                      <input matInput type="number" formControlName="netIncome" placeholder="Net Income" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Gross Profit -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Gross Profit</mat-label>
+                      <input matInput type="number" formControlName="grossProfit" placeholder="Gross Profit" required>
+                    
+                    </mat-form-field>
+              
+                    <!-- Operating Expenses -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Operating Expenses</mat-label>
+                      <input matInput type="number" formControlName="operatingExpenses" placeholder="Operating Expenses" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Nonoperating Income -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Nonoperating Income</mat-label>
+                      <input matInput type="number" formControlName="nonoperatingIncome" placeholder="Nonoperating Income" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Interest Expense -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Interest Expense</mat-label>
+                      <input matInput type="number" formControlName="interestExpense" placeholder="Interest Expense" required>
+                      
+                    </mat-form-field>
+              
+              
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+              
+                <!-- Step 3: Cashflow (formerly Step 2) -->
+                <mat-step [stepControl]="cashflowFormGroup">
+                  <form [formGroup]="cashflowFormGroup">
+                    <ng-template matStepLabel>Cashflow</ng-template>
+                    <!-- Net Cash Operating Activities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Net Cash Operating Activities</mat-label>
+                      <input matInput type="number" formControlName="netCashOperatingActivities"
+                        placeholder="Net Cash Operating Activities" required>
+                  
+                    </mat-form-field>
+              
+                    <!-- Net Cash Investing Activities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Net Cash Investing Activities</mat-label>
+                      <input matInput type="number" formControlName="netCashInvestingActivities"
+                        placeholder="Net Cash Investing Activities" required>
+                      
+                    </mat-form-field>
+              
+                    <!-- Net Cash Financing Activities -->
+                 <mat-form-field class="two-columns">
+
+                      <mat-label>Net Cash Financing Activities</mat-label>
+                      <input matInput type="number" formControlName="netCashFinancingActivities"
+                        placeholder="Net Cash Financing Activities" required>
+                      
+                    </mat-form-field> 
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Preview</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Preview</ng-template>    
+                    <div>
+                      <h3>Balance Sheet</h3>
+                      <p>Current Assets: {{ balanceSheetFormGroup.get('currentAssets')?.value }}</p>
+                      <p>Current Liabilities: {{ balanceSheetFormGroup.get('currentLiabilities')?.value }}</p>
+                      <p>Stockholder Equity: {{ balanceSheetFormGroup.get('stockholderEquity')?.value }}</p>
+                      <p>Liabilities And Stockholder Equity: {{ balanceSheetFormGroup.get('liabilitiesAndStockholderEquity')?.value }}</p>
+                      <p>Retained Earnings: {{ balanceSheetFormGroup.get('retainedEarnings')?.value }}</p>
+                      <p>Working Capital: {{ balanceSheetFormGroup.get('workingCapital')?.value }}</p>
+                      <p>Liabilities: {{ balanceSheetFormGroup.get('liabilities')?.value }}</p>
+                      <p>Cash: {{ balanceSheetFormGroup.get('cash')?.value }}</p>
+                      <p>Accounts Receivable: {{ balanceSheetFormGroup.get('accountsReceivable')?.value }}</p>
+                      <p>Inventory: {{ balanceSheetFormGroup.get('inventory')?.value }}</p>
+                      <p>Current Other Assets: {{ balanceSheetFormGroup.get('currentOtherAssets')?.value }}</p>
+                      <p>Noncurrent Assets: {{ balanceSheetFormGroup.get('noncurrentAssets')?.value }}</p>
+                      <p>Intangible Assets: {{ balanceSheetFormGroup.get('intangibleAssets')?.value }}</p>
+                      <p>Accounts Payable: {{ balanceSheetFormGroup.get('accountsPayable')?.value }}</p>
+                      <p>Short Term Debt: {{ balanceSheetFormGroup.get('shortTermDebt')?.value }}</p>
+                      <p>Long Term Debt: {{ balanceSheetFormGroup.get('longTermDebt')?.value }}</p>
+                      <p>Noncurrent Liabilities: {{ balanceSheetFormGroup.get('noncurrentLiabilities')?.value }}</p>
+                    </div>
+                  
+                    <div>
+                      <h3>Income Statement</h3>
+                      <p>Earnings Before Interest and Taxes: {{ incomeStatementFormGroup.get('earningBeforeInterestAndTaxes')?.value }}</p>
+                      <p>Revenues: {{ incomeStatementFormGroup.get('revenues')?.value }}</p>
+                      <p>Net Income: {{ incomeStatementFormGroup.get('netIncome')?.value }}</p>
+                      <p>Gross Profit: {{ incomeStatementFormGroup.get('grossProfit')?.value }}</p>
+                      <p>Operating Expenses: {{ incomeStatementFormGroup.get('operatingExpenses')?.value }}</p>
+                      <p>Nonoperating Income: {{ incomeStatementFormGroup.get('nonoperatingIncome')?.value }}</p>
+                      <p>Interest Expense: {{ incomeStatementFormGroup.get('interestExpense')?.value }}</p>
+                    </div>
+                  
+                    <div>
+                      <h3>Cashflow</h3>
+                      <p>Net Cash Operating Activities: {{ cashflowFormGroup.get('netCashOperatingActivities')?.value }}</p>
+                      <p>Net Cash Investing Activities: {{ cashflowFormGroup.get('netCashInvestingActivities')?.value }}</p>
+                      <p>Net Cash Financing Activities: {{ cashflowFormGroup.get('netCashFinancingActivities')?.value }}</p>
+                    </div>
+                  
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button (click)="onSubmit()">Submit</button>
+                    </div>
+                  </mat-step>
+                  
+                  
+              </mat-horizontal-stepper>
+              
+             
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
