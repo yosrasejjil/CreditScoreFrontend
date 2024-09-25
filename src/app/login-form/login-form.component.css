@@ -14,25 +14,24 @@ body {
 }
 
 .wrapper {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1140px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    max-width: 800px; /* Increased width */
-    height: auto;
-    display: flex;
-    background: #ffffff;
-    box-shadow: 0 0 25px rgba(0, 0, 0, .1); /* Slightly increased shadow for depth */
-    padding: 20px; /* Added padding for more spacing */
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  background: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1);
 }
 
 .credit {

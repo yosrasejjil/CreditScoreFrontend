@@ -8,10 +8,64 @@
            
               
               <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                 <!-- Step 1: Accession Information -->
+              <mat-step [stepControl]="accessionFormGroup">
+                <form [formGroup]="accessionFormGroup">             
+
+                  <ng-template matStepLabel>report Informations</ng-template>
+                  <mat-form-field class="two-columns">
+                    <mat-label>Accession Number</mat-label>
+                    <input matInput type="text" formControlName="accessionNo" placeholder="Accession No" required>
+                  </mat-form-field>
+                  
+ 
+                  <mat-form-field class="two-columns">
+                    <mat-label>Fiscal Period</mat-label>
+                    <mat-select formControlName="fp" placeholder="Select Fiscal Period" required>
+                      <mat-option value="Q1">Q1</mat-option>
+                      <mat-option value="Q2">Q2</mat-option>
+                      <mat-option value="Q3">Q3</mat-option>
+                      <mat-option value="Q4">FY</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <mat-form-field class="two-columns">
+                    <mat-label>Form Type</mat-label>
+                    <mat-select formControlName="form" placeholder="Select Form Type" required>
+                      <mat-option value="10-Q">10-Q</mat-option>
+                      <mat-option value="10-K">10-K</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+
+                 <mat-form-field class="two-columns">
+                    <mat-label>FiscalYear</mat-label>
+                    <input matInput type="number" formControlName="fy" placeholder="FY" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="two-columns">
+                    <mat-label>Filed Date</mat-label>
+                    <input matInput type="date" formControlName="filed" placeholder="Filed Date" required>
+                  </mat-form-field>
+
+                  <div>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>>
+                </form>
+              </mat-step>
                 <!-- Step 1: Balance Sheet -->
+                 
                 <mat-step [stepControl]="balanceSheetFormGroup">
                   <form [formGroup]="balanceSheetFormGroup">
                     <ng-template matStepLabel>Balance Sheet</ng-template>
+                     <!--  Assets -->
+                 <mat-form-field class="two-columns">
+
+                  <mat-label>assets</mat-label>
+                  <input matInput type="number" formControlName="assets" placeholder="assets" required>
+                
+                </mat-form-field>
+          
               
                     <!-- Current Assets -->
                  <mat-form-field class="two-columns">
@@ -41,7 +95,7 @@
                  <mat-form-field class="two-columns">
 
                       <mat-label>Liabilities And Stockholder Equity</mat-label>
-                      <input matInput type="number" formControlName="liabilitiesAndStockholderEquity"
+                      <input matInput type="number" formControlName="liabilitiesAndStockholdersEquity"
                         placeholder="Liabilities And Stockholder Equity" required>
                       
                     </mat-form-field>
@@ -151,6 +205,7 @@
                     </mat-form-field>
               
                     <div>
+                      <button mat-button matStepperPrevious>Back</button>
                       <button mat-button matStepperNext>Next</button>
                     </div>
                   </form>
@@ -266,7 +321,18 @@
                 <mat-step>
                   <ng-template matStepLabel>Preview</ng-template>    
                     <div>
+                      <div>
+                        <h3>Accession Form Details</h3>
+                        <p>Accession Number: {{ accessionFormGroup.get('accessionNo')?.value }}</p>
+                        <p>Fiscal Year: {{ accessionFormGroup.get('fy')?.value }}</p>
+                        <p>Fiscal Period: {{ accessionFormGroup.get('fp')?.value }}</p>
+                        <p>Formtype: {{ accessionFormGroup.get('form')?.value }}</p>
+                        <p>FiledAt: {{ accessionFormGroup.get('filed')?.value }}</p>
+                      </div>
+                      
                       <h3>Balance Sheet</h3>
+                      <p>Assets: {{ balanceSheetFormGroup.get('assets')?.value }}</p>
+
                       <p>Current Assets: {{ balanceSheetFormGroup.get('currentAssets')?.value }}</p>
                       <p>Current Liabilities: {{ balanceSheetFormGroup.get('currentLiabilities')?.value }}</p>
                       <p>Stockholder Equity: {{ balanceSheetFormGroup.get('stockholderEquity')?.value }}</p>

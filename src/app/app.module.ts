@@ -11,16 +11,18 @@ import { AuthContentComponent } from './auth-content/auth-content.component';
 import { AxiosService } from './services/axios.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { DashboardModule } from './dashboard/dashboard.module'; // Importing the DashboardModule
+
+import { DashboardModule } from './dashboard/dashboard.module';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { HomeComponent } from './home/home.component'; // Importing the DashboardModule
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     AuthContentComponent,
+    NotfoundComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { DashboardModule } from './dashboard/dashboard.module'; // Importing the
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DashboardModule, // Importing the DashboardModule here
+    DashboardModule,
     FormsModule,
   ],
   providers: [AxiosService],
