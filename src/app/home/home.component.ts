@@ -1,7 +1,7 @@
-/* import { Component, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, Renderer2 } from '@angular/core';
 // Import the external libraries
 import 'bootstrap';
-//import AOS from 'aos';
+import AOS from 'aos';
 import GLightbox from 'glightbox';
 
 @Component({
@@ -30,12 +30,14 @@ export class HomeComponent implements AfterViewInit {
     const selectHeader = document.querySelector('#header');
 
     const toggleScrolled = () => {
-      if (!selectHeader.classList.contains('scroll-up-sticky') &&
-          !selectHeader.classList.contains('sticky-top') &&
-          !selectHeader.classList.contains('fixed-top')) {
-        return;
+      if (selectHeader && selectBody) {
+        if (!selectHeader.classList.contains('scroll-up-sticky') &&
+            !selectHeader.classList.contains('sticky-top') &&
+            !selectHeader.classList.contains('fixed-top')) {
+          return;
+        }
+        window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
       }
-      window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
     };
 
     this.renderer.listen('window', 'scroll', toggleScrolled);
@@ -45,13 +47,18 @@ export class HomeComponent implements AfterViewInit {
   private setupMobileNavToggle(): void {
     const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-    const mobileNavToggle = () => {
-      this.renderer.selectRootElement('body').classList.toggle('mobile-nav-active');
-      mobileNavToggleBtn.classList.toggle('bi-list');
-      mobileNavToggleBtn.classList.toggle('bi-x');
-    };
+    if (mobileNavToggleBtn) {
+      const mobileNavToggle = () => {
+        const selectBody = document.querySelector('body');
+        if (selectBody) {
+          selectBody.classList.toggle('mobile-nav-active');
+        }
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
+      };
 
-    this.renderer.listen(mobileNavToggleBtn, 'click', mobileNavToggle);
+      this.renderer.listen(mobileNavToggleBtn, 'click', mobileNavToggle);
+    }
   }
 
   private setupHideMobileNav(): void {
@@ -75,7 +82,9 @@ export class HomeComponent implements AfterViewInit {
         const parent = dropdown.parentNode as HTMLElement;
         const nextSibling = parent.nextElementSibling as HTMLElement;
         parent.classList.toggle('active');
-        nextSibling.classList.toggle('dropdown-active');
+        if (nextSibling) {
+          nextSibling.classList.toggle('dropdown-active');
+        }
         e.stopImmediatePropagation();
       });
     });
@@ -99,13 +108,15 @@ export class HomeComponent implements AfterViewInit {
       }
     };
 
-    this.renderer.listen(scrollTop, 'click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    if (scrollTop) {
+      this.renderer.listen(scrollTop, 'click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
-    });
+    }
 
     this.renderer.listen('window', 'scroll', toggleScrollTop);
     this.renderer.listen('window', 'load', toggleScrollTop);
@@ -121,7 +132,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   private setupGLightbox(): void {
-    const glightbox = GLightbox({
+    GLightbox({
       selector: '.glightbox'
     });
   }
@@ -137,4 +148,3 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 }
- */
