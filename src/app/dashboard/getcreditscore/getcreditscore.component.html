@@ -87,7 +87,7 @@
                  <mat-form-field class="two-columns">
 
                       <mat-label>Stockholder Equity</mat-label>
-                      <input matInput type="number" formControlName="stockholderEquity" placeholder="Stockholder Equity" required>
+                      <input matInput type="number" formControlName="stockholdersEquity" placeholder="Stockholder Equity" required>
                      
                     </mat-form-field>
               
@@ -335,7 +335,7 @@
 
                       <p>Current Assets: {{ balanceSheetFormGroup.get('currentAssets')?.value }}</p>
                       <p>Current Liabilities: {{ balanceSheetFormGroup.get('currentLiabilities')?.value }}</p>
-                      <p>Stockholder Equity: {{ balanceSheetFormGroup.get('stockholderEquity')?.value }}</p>
+                      <p>Stockholder Equity: {{ balanceSheetFormGroup.get('stockholdersEquity')?.value }}</p>
                       <p>Liabilities And Stockholder Equity: {{ balanceSheetFormGroup.get('liabilitiesAndStockholderEquity')?.value }}</p>
                       <p>Retained Earnings: {{ balanceSheetFormGroup.get('retainedEarnings')?.value }}</p>
                       <p>Working Capital: {{ balanceSheetFormGroup.get('workingCapital')?.value }}</p>

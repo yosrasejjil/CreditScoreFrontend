@@ -1,56 +1,40 @@
-<div class="content-body">
-    <div class="container-fluid">
-      <!-- Add Project -->
-            <div class="col-md-12">
-                <div class="card" style="display: grid; align-content: center;">
-                  <div class="card-body text-center ai-icon  text-primary">
-                    
-                    <div class="example-header">
-                        <mat-form-field>
-                            <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-                        </mat-form-field>
-                      </div>
-                      
-                      <div class="example-container mat-elevation-z8">
-                      
-                        <mat-table [dataSource]="dataSource" matSort>
-                      
-                          <!-- ID Column -->
-                          <ng-container matColumnDef="id">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                          </ng-container>
-                      
-                          <!-- Progress Column -->
-                          <ng-container matColumnDef="progress">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
-                          </ng-container>
-                      
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-                          </ng-container>
-                      
-                          <!-- Color Column -->
-                          <ng-container matColumnDef="color">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-                            <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-                          </ng-container>
-                      
-                          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                          <mat-row *matRowDef="let row; columns: displayedColumns;">
-                          </mat-row>
-                        </mat-table>
-                      
-                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                      </div>
-                      
+<div class="content-body"> 
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card" style="display: grid; align-content: center;">
+        hkbkgkgiugiuykgugi
+          hkbkgkgiugiuykgugi
+          <div class="container my-5">
+            <div>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Filter results" />
+            </div>
+            <div class="example-container mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
+                <!-- Accession No Column -->
+                <ng-container matColumnDef="accessionNo">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Accession Number</th>
+                  <td mat-cell *matCellDef="let row"> {{ row.accessionNo }} </td>
+                </ng-container>
 
-                  </div>
-                </div>
-              </div>
+                <!-- Prediction Column -->
+                <ng-container matColumnDef="prediction">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Prediction</th>
+                  <!-- Display 'N/A' if prediction is null -->
+                  <td mat-cell *matCellDef="let row"> {{ row.prediction ?? 'N/A' }} </td>
+                </ng-container>
+
+                <!-- Table Header and Row Definitions -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+
+              <!-- Paginator -->
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+

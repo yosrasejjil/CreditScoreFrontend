@@ -24,6 +24,7 @@ export class FinancialDataService {
 
   getAllFinancialData(): Observable<FinancialDataDto[]> {
     const url = '/api/financial-data/all';
+    console.log(this.axiosService.request('GET', url, null));
     return from(this.axiosService.request('GET', url, null));
   }
 

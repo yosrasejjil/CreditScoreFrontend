@@ -1,17 +1,20 @@
-import { Component, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, OnInit } from '@angular/core';
 // Import the external libraries
 import 'bootstrap';
-import AOS from 'aos';
-import GLightbox from 'glightbox';
+import * as AOS from 'aos'; // Import AOS
+//import GLightbox from 'glightbox';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements  OnInit, AfterViewInit {
 
   constructor(private renderer: Renderer2) {}
+  ngOnInit(): void {
+    AOS.init();
+  }
 
   ngAfterViewInit(): void {
     this.setupScrolledClass();
@@ -20,8 +23,11 @@ export class HomeComponent implements AfterViewInit {
     this.setupNavDropdowns();
     this.setupPreloader();
     this.setupScrollTopButton();
-    this.setupAOS();
-    this.setupGLightbox();
+    AOS.refresh(); // Refresh AOS after view is fully initialized
+    //this.setupGLightbox();
+    AOS.refresh();
+
+    
     this.setupFAQToggle();
   }
 
@@ -131,11 +137,11 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  private setupGLightbox(): void {
-    GLightbox({
-      selector: '.glightbox'
-    });
-  }
+  // private setupGLightbox(): void {
+  //   GLightbox({
+  //     selector: '.glightbox'
+  //   });
+  // }
 
   private setupFAQToggle(): void {
     const faqItems = document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle');

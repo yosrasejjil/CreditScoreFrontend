@@ -8,6 +8,7 @@ import { FinancialDataService } from 'src/app/services/financial-data.service';
 import { FinancialDataDto } from 'src/app/shared/models/FinancialDataDto';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-getcreditscore',
@@ -38,7 +39,8 @@ export class GetcreditscoreComponent {
   years: number[] = [];
   userId?: string | null; // Add userId property
 
-  constructor() {
+  constructor(    private router: Router // Inject Router
+  ) {
     this.accessionFormGroup = this._formBuilder.group({
       accessionNo: ['', Validators.required],
       fy: ['', Validators.required],
@@ -51,7 +53,7 @@ export class GetcreditscoreComponent {
       assets: ['', Validators.required],
       currentAssets: ['', Validators.required],
       currentLiabilities: ['', Validators.required],
-      stockholderEquity: ['', Validators.required],
+      stockholdersEquity: ['', Validators.required],
       liabilitiesAndStockholdersEquity: ['', Validators.required],
       retainedEarnings: ['', Validators.required],
       workingCapital: ['', Validators.required],
@@ -115,6 +117,10 @@ export class GetcreditscoreComponent {
     this._financialDataService.addFinancialData(formData).subscribe(
       (response: any) => {
         console.log('Financial data saved:', response);
+    
+        // Navigate to AllCreditScoresComponent
+        this.router.navigate(['/dashboard/all-credit-scores']); // Reloads the component to show updated data
+    
         alert("Form submission successful!");
       },
       (error: any) => {
