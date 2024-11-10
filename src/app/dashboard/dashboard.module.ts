@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DashboardRoutingModule } from './dash-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { DashboardRoutingModule } from './dash-routing.module';
   ],
   imports: [
     GetcreditscoreComponent, // This component should be declared, not imported
-
+    MatFormFieldModule,
     CommonModule,
     DashboardRoutingModule,
     MatTableModule,

@@ -30,11 +30,11 @@ export class LoginFormComponent {
       localStorage.setItem('login', response.data.login);   // Store login in localStorage (if needed)
 
       // Navigate to dashboard
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/dashboard']);
     }).catch(error => {
       this.axiosService.setAuthToken(null);
       localStorage.removeItem('user_id');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     });
   }
 
@@ -57,7 +57,7 @@ export class LoginFormComponent {
     }).catch(error => {
       this.axiosService.setAuthToken(null);
       localStorage.removeItem('user_id');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     });
   }
 

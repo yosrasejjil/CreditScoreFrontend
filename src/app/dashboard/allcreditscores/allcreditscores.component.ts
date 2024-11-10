@@ -1,49 +1,68 @@
-/* import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { FinancialDataService } from 'src/app/services/financial-data.service';
 import { FinancialDataDto } from 'src/app/shared/models/FinancialDataDto';
+
 @Component({
   selector: 'app-allcreditscores',
   templateUrl: './allcreditscores.component.html',
   styleUrls: ['./allcreditscores.component.css']
 })
-export class AllcreditscoresComponent implements OnInit {
-  displayedColumns: string[] = ['accessionNo', 'prediction']; // Displayed columns
-  dataSource: MatTableDataSource<FinancialDataDto>;
-
+export class AllcreditscoresComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['accessionNo', 'prediction', 'score'];
+  dataSource: MatTableDataSource<FinancialDataDto> = new MatTableDataSource<FinancialDataDto>();
+  userId: string | null = null;
+  rating?:number ;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private router: Router,
-    private financialDataService: FinancialDataService // Inject the service
-  ) {
-    // Initialize dataSource with an empty array
-    this.dataSource = new MatTableDataSource<FinancialDataDto>([]);
-  }
+    private financialDataService: FinancialDataService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.loadAllFinancialData(); // Fetch all financial data on component initialization
+    this.userId = localStorage.getItem('user_id'); // Retrieve user ID from local storage
+    if (this.userId) {
+      this.loadFinancialData(this.userId);
+    }
   }
 
   ngAfterViewInit() {
-    // Set paginator and sort once the view is initialized
+    // Set paginator and sort after the view initializes
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  // Method to fetch all financial data
-  private loadAllFinancialData(): void {
-    this.financialDataService.getAllFinancialData().subscribe(
+  getRatingFromScore(score: number): string {
+     this.rating=1-score
+    if (this.rating >= 0.875 && this.rating <= 1.0) {
+      return 'AAA';
+    } else if (this.rating >= 0.75 && this.rating < 0.875) {
+      return 'AA';
+    } else if (this.rating >= 0.625 && this.rating < 0.75) {
+      return 'A';
+    } else if (this.rating >= 0.5 && this.rating < 0.625) {
+      return 'BBB';
+    } else if (this.rating >= 0.375 && this.rating < 0.5) {
+      return 'BB';
+    } else if (this.rating >= 0.25 && this.rating < 0.375) {
+      return 'B';
+    } else if (this.rating >= 0.125 && this.rating < 0.25) {
+      return 'CCC/CC/C';
+    } else if (this.rating >= 0.0 && this.rating < 0.125) {
+      return 'D';
+    } else {
+      return 'Invalid Score';
+    }
+  }
+
+  loadFinancialData(userId: string): void {
+    this.financialDataService.getFinancialDataByUser(userId).subscribe(
       (data: FinancialDataDto[]) => {
-        console.log('aaaaaaaaaaaaaaaaaa')
-
-        this.dataSource.data = data; // Populate the dataSource with all financial data
-        console.log(this.dataSource.data);
-
+        this.dataSource.data = data; // Update data source with fetched data
       },
       (error) => {
         console.error('Error fetching financial data:', error);
@@ -56,67 +75,9 @@ export class AllcreditscoresComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { FinancialDataService } from 'src/app/services/financial-data.service';
-import { FinancialDataDto } from 'src/app/shared/models/FinancialDataDto';
-
-@Component({
-  selector: 'app-allcreditscores',
-  templateUrl: './allcreditscores.component.html',
-  styleUrls: ['./allcreditscores.component.css']
-})
-export class AllcreditscoresComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['accessionNo', 'prediction'];
-  dataSource: MatTableDataSource<FinancialDataDto>;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(
-    private router: Router,
-    private financialDataService: FinancialDataService,
-    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
-  ) {
-    this.dataSource = new MatTableDataSource<FinancialDataDto>([]);
-  }
-
-  ngOnInit(): void {
-    this.loadAllFinancialData();
-  }
-
-  ngAfterViewInit() {
-    // Ensure paginator and sort are set correctly after the view initializes
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  private loadAllFinancialData(): void {
-    this.financialDataService.getAllFinancialData().subscribe(
-      (data: FinancialDataDto[]) => {
-        console.log('Data fetched successfully:', data);
-        this.dataSource = new MatTableDataSource<FinancialDataDto>(data); // Set data to the dataSource
-        this.cdr.detectChanges(); // Trigger change detection
-        console.log('potato:', this.dataSource.data);
-
-      },
-      (error) => {
-        console.error('Error fetching financial data:', error);
-      }
-    );
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-} */
 
 
-
+/* 
 
 
 
@@ -144,26 +105,34 @@ export class AllcreditscoresComponent implements AfterViewInit {
 
   constructor(private financialDataService: FinancialDataService) {
     this.loadAllFinancialData();
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
+  } ngOnInit(): void {
+    this.userId = localStorage.getItem('user_id'); // Retrieve user ID from local storage
+    if (this.userId) {
+      this.loadFinancialData(this.userId);
+     /* console.log('ohohoh:', this.financialData);
+
+    }
+  
+
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  loadAllFinancialData(): void {
-    this.financialDataService.getAllFinancialData().subscribe(
+
+  loadFinancialData(userId: string): void {
+    this.financialDataService.getFinancialDataByUser(userId).subscribe(
       (data: FinancialDataDto[]) => {
-        this.dataSource.data = data; // Set fetched data to dataSource
+        this.financialData = data; // This should now be the array you expect
       },
       (error) => {
         console.error('Error fetching financial data:', error);
       }
     );
   }
+
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -174,3 +143,44 @@ export class AllcreditscoresComponent implements AfterViewInit {
     }
   }
 }
+
+
+import { Component, OnInit } from '@angular/core';
+import { FinancialDataService } from 'src/app/services/financial-data.service';
+import { FinancialDataDto } from 'src/app/shared/models/FinancialDataDto'; // Ensure this path is correct
+
+@Component({
+  selector: 'app-allcreditscores',
+  templateUrl: './allcreditscores.component.html',
+  styleUrls: ['./allcreditscores.component.css']
+})
+export class AllcreditscoresComponent implements OnInit {
+
+  financialData: FinancialDataDto[] = []; // Ensure this matches the imported model type
+  userId: string | null = null;
+
+  constructor(private financialDataService: FinancialDataService) { }
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('user_id'); // Retrieve user ID from local storage
+    if (this.userId) {
+      this.loadFinancialData(this.userId);
+      console.log('ohohoh:', this.financialData);
+
+    
+  }
+
+
+  loadFinancialData(userId: string): void {
+    this.financialDataService.getFinancialDataByUser(userId).subscribe(
+      (data: FinancialDataDto[]) => {
+        this.financialData = data; // This should now be the array you expect
+      },
+      (error) => {
+        console.error('Error fetching financial data:', error);
+      }
+    );
+  }
+
+}
+   */

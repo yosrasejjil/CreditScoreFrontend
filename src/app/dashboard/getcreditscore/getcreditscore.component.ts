@@ -42,49 +42,50 @@ export class GetcreditscoreComponent {
   constructor(    private router: Router // Inject Router
   ) {
     this.accessionFormGroup = this._formBuilder.group({
-      accessionNo: ['', Validators.required],
-      fy: ['', Validators.required],
-      fp: ['', Validators.required],
-      form: ['', Validators.required],
-      filed: ['', Validators.required],
+      accessionNo: ['0001234567', Validators.required], // Default value for Accession No
+      fy: [2023, Validators.required],                   // Default Fiscal Year
+      fp: ['Q4', Validators.required],                   // Default Fiscal Period
+      form: ['10-K', Validators.required],               // Default Form Type
+      filed: ['2023-12-31', Validators.required],        // Default Filed Date
     });
 
     this.balanceSheetFormGroup = this._formBuilder.group({
-      assets: ['', Validators.required],
-      currentAssets: ['', Validators.required],
-      currentLiabilities: ['', Validators.required],
-      stockholdersEquity: ['', Validators.required],
-      liabilitiesAndStockholdersEquity: ['', Validators.required],
-      retainedEarnings: ['', Validators.required],
-      workingCapital: ['', Validators.required],
-      liabilities: ['', Validators.required],
-      cash: ['', Validators.required],
-      accountsReceivable: ['', Validators.required],
-      inventory: ['', Validators.required],
-      currentOtherAssets: ['', Validators.required],
-      noncurrentAssets: ['', Validators.required],
-      intangibleAssets: ['', Validators.required],
-      accountsPayable: ['', Validators.required],
-      shortTermDebt: ['', Validators.required],
-      longTermDebt: ['', Validators.required],
-      noncurrentLiabilities: ['', Validators.required],
+      assets: [7921488.0, Validators.required],
+      currentAssets: [1437.0, Validators.required],
+      currentLiabilities: [9083390.0, Validators.required],
+      stockholdersEquity: [-124462.0, Validators.required],
+      liabilitiesAndStockholdersEquity: [7921488.0, Validators.required],
+      retainedEarnings: [-17106213.0, Validators.required],
+      workingCapital: [-7645903.0, Validators.required],
+      liabilities: [9195950.0, Validators.required],
+      cash: [323449.0, Validators.required],
+      accountsReceivable: [1847358.0, Validators.required],
+      inventory: [0, Validators.required],
+      currentOtherAssets: [0, Validators.required],
+      noncurrentAssets: [0, Validators.required],
+      intangibleAssets: [0, Validators.required],
+      accountsPayable: [21742000.0, Validators.required],
+      shortTermDebt: [0, Validators.required],
+      longTermDebt: [112560.0, Validators.required],
+      noncurrentLiabilities: [0, Validators.required],
     });
 
     this.incomeStatementFormGroup = this._formBuilder.group({
-      earningBeforeInterestAndTaxes: ['', Validators.required],
-      revenues: ['', Validators.required],
-      netIncome: ['', Validators.required],
-      grossProfit: ['', Validators.required],
-      operatingExpenses: ['', Validators.required],
-      nonoperatingIncome: ['', Validators.required],
-      interestExpense: ['', Validators.required],
+      earningBeforeInterestAndTaxes: [-87655.0, Validators.required],
+      revenues: [881908.0, Validators.required],
+      netIncome: [-1469598.0, Validators.required],
+      grossProfit: [0, Validators.required],
+      operatingExpenses: [0, Validators.required],
+      nonoperatingIncome: [0, Validators.required],
+      interestExpense: [1397067.0, Validators.required],
     });
 
     this.cashflowFormGroup = this._formBuilder.group({
-      netCashOperatingActivities: ['', Validators.required],
-      netCashInvestingActivities: ['', Validators.required],
-      netCashFinancingActivities: ['', Validators.required],
+      netCashOperatingActivities: [-120660.0, Validators.required],
+      netCashInvestingActivities: [260637.0, Validators.required],
+      netCashFinancingActivities: [-26785.0, Validators.required],
     });
+  
   }
 
   private loadFiscalYears(): void {

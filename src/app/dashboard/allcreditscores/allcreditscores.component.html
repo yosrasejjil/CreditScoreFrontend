@@ -1,40 +1,50 @@
-<div class="content-body"> 
+<div class="content-body">
   <div class="container-fluid">
     <div class="col-md-12">
       <div class="card" style="display: grid; align-content: center;">
-        hkbkgkgiugiuykgugi
-          hkbkgkgiugiuykgugi
-          <div class="container my-5">
-            <div>
-              <input matInput (keyup)="applyFilter($event)" placeholder="Filter results" />
+
+        <div class="container my-5">
+          <div class="mat-elevation-z8">
+
+            <!-- Filter input field -->
+            <div class="filter-container">
+              <mat-form-field appearance="outline" class="filter-field">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Filter results" />
+              </mat-form-field>
             </div>
-            <div class="example-container mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
-                <!-- Accession No Column -->
-                <ng-container matColumnDef="accessionNo">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Accession Number</th>
-                  <td mat-cell *matCellDef="let row"> {{ row.accessionNo }} </td>
-                </ng-container>
+            <!-- Material table with columns and pagination -->
+            <table mat-table [dataSource]="dataSource" matSort>
 
-                <!-- Prediction Column -->
-                <ng-container matColumnDef="prediction">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Prediction</th>
-                  <!-- Display 'N/A' if prediction is null -->
-                  <td mat-cell *matCellDef="let row"> {{ row.prediction ?? 'N/A' }} </td>
-                </ng-container>
+              <!-- Accession Number Column -->
+              <ng-container matColumnDef="accessionNo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Accession No</th>
+                <td mat-cell *matCellDef="let element">{{ element.accessionNo }}</td>
+              </ng-container>
 
-                <!-- Table Header and Row Definitions -->
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
+              <!-- Prediction Column -->
+              <ng-container matColumnDef="prediction">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Prediction</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.prediction === 1 ? 'Bankrupt' : element.prediction === 0 ? 'Stable' : 'Unknown' }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="score">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>score</th>
+                <td mat-cell *matCellDef="let element">{{ getRatingFromScore(element.score) }}</td>
+              </ng-container>
+              <!-- Table Header and Row Definitions -->
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
 
-              <!-- Paginator -->
-              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-            </div>
+            <!-- Pagination Controls -->
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </div>
+
         </div>
       </div>
     </div>
   </div>
-
+</div>

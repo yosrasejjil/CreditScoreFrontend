@@ -34,5 +34,6 @@ export interface FinancialDataDto {
   longTermDebt: number
   noncurrentLiabilities: number
   prediction?: any
+  score?: any
 
 }
