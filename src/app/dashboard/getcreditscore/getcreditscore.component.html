@@ -16,7 +16,11 @@
                   <mat-form-field class="two-columns">
                     <mat-label>Accession Number</mat-label>
                     <input matInput type="text" formControlName="accessionNo" placeholder="Accession No" required>
+                    <mat-error *ngIf="accessionFormGroup.get('accessionNo')?.hasError('required')">
+                      Accession Number is required.
+                    </mat-error>
                   </mat-form-field>
+                  
                   
  
                   <mat-form-field class="two-columns">
@@ -38,10 +42,10 @@
                   </mat-form-field>
                   
 
-                 <mat-form-field class="two-columns">
+                <!--  <mat-form-field class="two-columns">
                     <mat-label>FiscalYear</mat-label>
                     <input matInput type="number" formControlName="fy" placeholder="FY" required>
-                  </mat-form-field>
+                  </mat-form-field> -->
 
                   <mat-form-field class="two-columns">
                     <mat-label>Filed Date</mat-label>
@@ -54,268 +58,377 @@
                 </form>
               </mat-step>
                 <!-- Step 1: Balance Sheet -->
-                 
+                
                 <mat-step [stepControl]="balanceSheetFormGroup">
                   <form [formGroup]="balanceSheetFormGroup">
                     <ng-template matStepLabel>Balance Sheet</ng-template>
-                     <!--  Assets -->
-                 <mat-form-field class="two-columns">
-
-                  <mat-label>assets</mat-label>
-                  <input matInput type="number" formControlName="assets" placeholder="assets" required>
                 
-                </mat-form-field>
-          
-              
+                    <!-- Assets -->
+                    <mat-form-field class="two-columns">
+                      <mat-label>Assets</mat-label>
+                      <input matInput type="number" formControlName="assets" placeholder="Assets" required>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('assets')?.hasError('required')">
+                        Assets are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('assets')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
+                    </mat-form-field>
+                
                     <!-- Current Assets -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Current Assets</mat-label>
                       <input matInput type="number" formControlName="currentAssets" placeholder="Current Assets" required>
-                    
+                      <mat-error *ngIf="balanceSheetFormGroup.get('currentAssets')?.hasError('required')">
+                        Current assets are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('currentAssets')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                
                     <!-- Current Liabilities -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Current Liabilities</mat-label>
                       <input matInput type="number" formControlName="currentLiabilities" placeholder="Current Liabilities" required>
-                  
+                      <mat-error *ngIf="balanceSheetFormGroup.get('currentLiabilities')?.hasError('required')">
+                        Current liabilities are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('currentLiabilities')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                
                     <!-- Stockholder Equity -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Stockholder Equity</mat-label>
                       <input matInput type="number" formControlName="stockholdersEquity" placeholder="Stockholder Equity" required>
-                     
+                      <mat-error *ngIf="balanceSheetFormGroup.get('stockholdersEquity')?.hasError('required')">
+                        Stockholder equity is required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('stockholdersEquity')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                
                     <!-- Liabilities And Stockholder Equity -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Liabilities And Stockholder Equity</mat-label>
                       <input matInput type="number" formControlName="liabilitiesAndStockholdersEquity"
                         placeholder="Liabilities And Stockholder Equity" required>
-                      
+                      <mat-error *ngIf="balanceSheetFormGroup.get('liabilitiesAndStockholdersEquity')?.hasError('required')">
+                        Liabilities and stockholder equity are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('liabilitiesAndStockholdersEquity')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
+                
                     <!-- Retained Earnings -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Retained Earnings</mat-label>
                       <input matInput type="number" formControlName="retainedEarnings" placeholder="Retained Earnings" required>
-                      
+                      <mat-error *ngIf="balanceSheetFormGroup.get('retainedEarnings')?.hasError('required')">
+                        Retained earnings are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('retainedEarnings')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                
                     <!-- Working Capital -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Working Capital</mat-label>
                       <input matInput type="number" formControlName="workingCapital" placeholder="Working Capital" required>
-                     
+                      <mat-error *ngIf="balanceSheetFormGroup.get('workingCapital')?.hasError('required')">
+                        Working capital is required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('workingCapital')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                
                     <!-- Liabilities -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Liabilities</mat-label>
                       <input matInput type="number" formControlName="liabilities" placeholder="Liabilities" required>
-                     
+                      <mat-error *ngIf="balanceSheetFormGroup.get('liabilities')?.hasError('required')">
+                        Liabilities are required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('liabilities')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
+                    
                     <!-- Cash -->
-                 <mat-form-field class="two-columns">
-
+                    <mat-form-field class="two-columns">
                       <mat-label>Cash</mat-label>
                       <input matInput type="number" formControlName="cash" placeholder="Cash" required>
-                  
+                      <mat-error *ngIf="balanceSheetFormGroup.get('cash')?.hasError('required')">
+                        Cash is required.
+                      </mat-error>
+                      <mat-error *ngIf="balanceSheetFormGroup.get('cash')?.hasError('pattern')">
+                        Must be a valid number.
+                      </mat-error>
                     </mat-form-field>
-              
-                    <!-- Accounts Receivable -->
-                 <mat-form-field class="two-columns">
+                   <!-- Accounts Receivable -->
+<mat-form-field class="two-columns">
+  <mat-label>Accounts Receivable</mat-label>
+  <input matInput type="number" formControlName="accountsReceivable" placeholder="Accounts Receivable" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('accountsReceivable')?.hasError('required')">
+    Accounts Receivable is required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('accountsReceivable')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Accounts Receivable</mat-label>
-                      <input matInput type="number" formControlName="accountsReceivable" placeholder="Accounts Receivable" required>
-                    
-                    </mat-form-field>
-              
-                    <!-- Inventory -->
-                 <mat-form-field class="two-columns">
+<!-- Inventory -->
+<mat-form-field class="two-columns">
+  <mat-label>Inventory</mat-label>
+  <input matInput type="number" formControlName="inventory" placeholder="Inventory" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('inventory')?.hasError('required')">
+    Inventory is required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('inventory')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Inventory</mat-label>
-                      <input matInput type="number" formControlName="inventory" placeholder="Inventory" required>
-                     
-                    </mat-form-field>
-              
-                    <!-- Current Other Assets -->
-                 <mat-form-field class="two-columns">
+<!-- Current Other Assets -->
+<mat-form-field class="two-columns">
+  <mat-label>Current Other Assets</mat-label>
+  <input matInput type="number" formControlName="currentOtherAssets" placeholder="Current Other Assets" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('currentOtherAssets')?.hasError('required')">
+    Current Other Assets are required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('currentOtherAssets')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Current Other Assets</mat-label>
-                      <input matInput type="number" formControlName="currentOtherAssets" placeholder="Current Other Assets" required>
-                     
-                    </mat-form-field>
-              
-                    <!-- Noncurrent Assets -->
-                 <mat-form-field class="two-columns">
+<!-- Noncurrent Assets -->
+<mat-form-field class="two-columns">
+  <mat-label>Noncurrent Assets</mat-label>
+  <input matInput type="number" formControlName="noncurrentAssets" placeholder="Noncurrent Assets" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('noncurrentAssets')?.hasError('required')">
+    Noncurrent Assets are required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('noncurrentAssets')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Noncurrent Assets</mat-label>
-                      <input matInput type="number" formControlName="noncurrentAssets" placeholder="Noncurrent Assets" required>
-                     
-                    </mat-form-field>
-              
-                    <!-- Intangible Assets -->
-                 <mat-form-field class="two-columns">
+<!-- Intangible Assets -->
+<mat-form-field class="two-columns">
+  <mat-label>Intangible Assets</mat-label>
+  <input matInput type="number" formControlName="intangibleAssets" placeholder="Intangible Assets" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('intangibleAssets')?.hasError('required')">
+    Intangible Assets are required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('intangibleAssets')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Intangible Assets</mat-label>
-                      <input matInput type="number" formControlName="intangibleAssets" placeholder="Intangible Assets" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Accounts Payable -->
-                 <mat-form-field class="two-columns">
+<!-- Accounts Payable -->
+<mat-form-field class="two-columns">
+  <mat-label>Accounts Payable</mat-label>
+  <input matInput type="number" formControlName="accountsPayable" placeholder="Accounts Payable" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('accountsPayable')?.hasError('required')">
+    Accounts Payable is required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('accountsPayable')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Accounts Payable</mat-label>
-                      <input matInput type="number" formControlName="accountsPayable" placeholder="Accounts Payable" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Short Term Debt -->
-                 <mat-form-field class="two-columns">
+<!-- Short Term Debt -->
+<mat-form-field class="two-columns">
+  <mat-label>Short Term Debt</mat-label>
+  <input matInput type="number" formControlName="shortTermDebt" placeholder="Short Term Debt" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('shortTermDebt')?.hasError('required')">
+    Short Term Debt is required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('shortTermDebt')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Short Term Debt</mat-label>
-                      <input matInput type="number" formControlName="shortTermDebt" placeholder="Short Term Debt" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Long Term Debt -->
-                 <mat-form-field class="two-columns">
+<!-- Long Term Debt -->
+<mat-form-field class="two-columns">
+  <mat-label>Long Term Debt</mat-label>
+  <input matInput type="number" formControlName="longTermDebt" placeholder="Long Term Debt" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('longTermDebt')?.hasError('required')">
+    Long Term Debt is required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('longTermDebt')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Long Term Debt</mat-label>
-                      <input matInput type="number" formControlName="longTermDebt" placeholder="Long Term Debt" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Noncurrent Liabilities -->
-                 <mat-form-field class="two-columns">
+<!-- Noncurrent Liabilities -->
+<mat-form-field class="two-columns">
+  <mat-label>Noncurrent Liabilities</mat-label>
+  <input matInput type="number" formControlName="noncurrentLiabilities" placeholder="Noncurrent Liabilities" required>
+  <mat-error *ngIf="balanceSheetFormGroup.get('noncurrentLiabilities')?.hasError('required')">
+    Noncurrent Liabilities are required.
+  </mat-error>
+  <mat-error *ngIf="balanceSheetFormGroup.get('noncurrentLiabilities')?.hasError('pattern')">
+    Must be a valid number.
+  </mat-error>
+</mat-form-field>
 
-                      <mat-label>Noncurrent Liabilities</mat-label>
-                      <input matInput type="number" formControlName="noncurrentLiabilities" placeholder="Noncurrent Liabilities"
-                        required>
-                      
-                    </mat-form-field>
-              
-                    <div>
-                      <button mat-button matStepperPrevious>Back</button>
-                      <button mat-button matStepperNext>Next</button>
-                    </div>
-                  </form>
-                </mat-step>
-              
-              
-                <!-- Step 2: Income Statement (formerly Step 3) -->
-                <mat-step [stepControl]="incomeStatementFormGroup">
-                  <form [formGroup]="incomeStatementFormGroup">
-                    <ng-template matStepLabel>Income Statement</ng-template>
-              
-                    <!-- Earnings Before Interest and Taxes -->
-                 <mat-form-field class="two-columns">
+<div>
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button matStepperNext>Next</button>
+</div>
 
-                      <mat-label>Earnings Before Interest and Taxes</mat-label>
-                      <input matInput type="number" formControlName="earningBeforeInterestAndTaxes"
-                        placeholder="Earnings Before Interest and Taxes" required>
-                     
-                    </mat-form-field>
-              
-                    <!-- Revenues -->
-                 <mat-form-field class="two-columns">
+<mat-step [stepControl]="incomeStatementFormGroup">
+  <form [formGroup]="incomeStatementFormGroup">
+    <ng-template matStepLabel>Income Statement</ng-template>
 
-                      <mat-label>Revenues</mat-label>
-                      <input matInput type="number" formControlName="revenues" placeholder="Revenues" required>
-                     
-                    </mat-form-field>
-              
-                    <!-- Net Income -->
-                 <mat-form-field class="two-columns">
+    <!-- Earnings Before Interest and Taxes -->
+    <mat-form-field class="two-columns">
+      <mat-label>Earnings Before Interest and Taxes</mat-label>
+      <input matInput type="number" formControlName="earningBeforeInterestAndTaxes"
+        placeholder="Earnings Before Interest and Taxes" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('earningBeforeInterestAndTaxes')?.hasError('required')">
+        Earnings Before Interest and Taxes is required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('earningBeforeInterestAndTaxes')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Net Income</mat-label>
-                      <input matInput type="number" formControlName="netIncome" placeholder="Net Income" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Gross Profit -->
-                 <mat-form-field class="two-columns">
+    <!-- Revenues -->
+    <mat-form-field class="two-columns">
+      <mat-label>Revenues</mat-label>
+      <input matInput type="number" formControlName="revenues" placeholder="Revenues" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('revenues')?.hasError('required')">
+        Revenues are required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('revenues')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Gross Profit</mat-label>
-                      <input matInput type="number" formControlName="grossProfit" placeholder="Gross Profit" required>
-                    
-                    </mat-form-field>
-              
-                    <!-- Operating Expenses -->
-                 <mat-form-field class="two-columns">
+    <!-- Net Income -->
+    <mat-form-field class="two-columns">
+      <mat-label>Net Income</mat-label>
+      <input matInput type="number" formControlName="netIncome" placeholder="Net Income" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('netIncome')?.hasError('required')">
+        Net Income is required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('netIncome')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Operating Expenses</mat-label>
-                      <input matInput type="number" formControlName="operatingExpenses" placeholder="Operating Expenses" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Nonoperating Income -->
-                 <mat-form-field class="two-columns">
+    <!-- Gross Profit -->
+    <mat-form-field class="two-columns">
+      <mat-label>Gross Profit</mat-label>
+      <input matInput type="number" formControlName="grossProfit" placeholder="Gross Profit" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('grossProfit')?.hasError('required')">
+        Gross Profit is required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('grossProfit')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Nonoperating Income</mat-label>
-                      <input matInput type="number" formControlName="nonoperatingIncome" placeholder="Nonoperating Income" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Interest Expense -->
-                 <mat-form-field class="two-columns">
+    <!-- Operating Expenses -->
+    <mat-form-field class="two-columns">
+      <mat-label>Operating Expenses</mat-label>
+      <input matInput type="number" formControlName="operatingExpenses" placeholder="Operating Expenses" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('operatingExpenses')?.hasError('required')">
+        Operating Expenses are required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('operatingExpenses')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Interest Expense</mat-label>
-                      <input matInput type="number" formControlName="interestExpense" placeholder="Interest Expense" required>
-                      
-                    </mat-form-field>
-              
-              
-                    <div>
-                      <button mat-button matStepperPrevious>Back</button>
-                      <button mat-button matStepperNext>Next</button>
-                    </div>
-                  </form>
-                </mat-step>
-              
-                <!-- Step 3: Cashflow (formerly Step 2) -->
-                <mat-step [stepControl]="cashflowFormGroup">
-                  <form [formGroup]="cashflowFormGroup">
-                    <ng-template matStepLabel>Cashflow</ng-template>
-                    <!-- Net Cash Operating Activities -->
-                 <mat-form-field class="two-columns">
+    <!-- Nonoperating Income -->
+    <mat-form-field class="two-columns">
+      <mat-label>Nonoperating Income</mat-label>
+      <input matInput type="number" formControlName="nonoperatingIncome" placeholder="Nonoperating Income" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('nonoperatingIncome')?.hasError('required')">
+        Nonoperating Income is required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('nonoperatingIncome')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Net Cash Operating Activities</mat-label>
-                      <input matInput type="number" formControlName="netCashOperatingActivities"
-                        placeholder="Net Cash Operating Activities" required>
-                  
-                    </mat-form-field>
-              
-                    <!-- Net Cash Investing Activities -->
-                 <mat-form-field class="two-columns">
+    <!-- Interest Expense -->
+    <mat-form-field class="two-columns">
+      <mat-label>Interest Expense</mat-label>
+      <input matInput type="number" formControlName="interestExpense" placeholder="Interest Expense" required>
+      <mat-error *ngIf="incomeStatementFormGroup.get('interestExpense')?.hasError('required')">
+        Interest Expense is required.
+      </mat-error>
+      <mat-error *ngIf="incomeStatementFormGroup.get('interestExpense')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
 
-                      <mat-label>Net Cash Investing Activities</mat-label>
-                      <input matInput type="number" formControlName="netCashInvestingActivities"
-                        placeholder="Net Cash Investing Activities" required>
-                      
-                    </mat-form-field>
-              
-                    <!-- Net Cash Financing Activities -->
-                 <mat-form-field class="two-columns">
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </form>
+</mat-step>
+<mat-step [stepControl]="cashflowFormGroup">
+  <form [formGroup]="cashflowFormGroup">
+    <ng-template matStepLabel>Cashflow</ng-template>
 
-                      <mat-label>Net Cash Financing Activities</mat-label>
-                      <input matInput type="number" formControlName="netCashFinancingActivities"
-                        placeholder="Net Cash Financing Activities" required>
-                      
-                    </mat-form-field> 
-                    <div>
-                      <button mat-button matStepperPrevious>Back</button>
-                      <button mat-button matStepperNext>Preview</button>
-                    </div>
+    <!-- Net Cash Operating Activities -->
+    <mat-form-field class="two-columns">
+      <mat-label>Net Cash Operating Activities</mat-label>
+      <input matInput type="number" formControlName="netCashOperatingActivities"
+        placeholder="Net Cash Operating Activities" required>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashOperatingActivities')?.hasError('required')">
+        Net Cash Operating Activities is required.
+      </mat-error>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashOperatingActivities')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Net Cash Investing Activities -->
+    <mat-form-field class="two-columns">
+      <mat-label>Net Cash Investing Activities</mat-label>
+      <input matInput type="number" formControlName="netCashInvestingActivities"
+        placeholder="Net Cash Investing Activities" required>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashInvestingActivities')?.hasError('required')">
+        Net Cash Investing Activities is required.
+      </mat-error>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashInvestingActivities')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Net Cash Financing Activities -->
+    <mat-form-field class="two-columns">
+      <mat-label>Net Cash Financing Activities</mat-label>
+      <input matInput type="number" formControlName="netCashFinancingActivities"
+        placeholder="Net Cash Financing Activities" required>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashFinancingActivities')?.hasError('required')">
+        Net Cash Financing Activities is required.
+      </mat-error>
+      <mat-error *ngIf="cashflowFormGroup.get('netCashFinancingActivities')?.hasError('pattern')">
+        Must be a valid number.
+      </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Preview</button>
+    </div>
+  </form>
+</mat-step>
+
                   </form>
                 </mat-step>
                 <mat-step>

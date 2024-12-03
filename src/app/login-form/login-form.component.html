@@ -1,90 +1,78 @@
-<div class="wrapper">
-	<div class="container">
-		<div class="col-left">
-			<div class="login-text">
-				
-				<ul class="nav" id="ex1" role="tablist">
-					<li class="nav-item" role="presentation">
-						<button class="btn" [ngClass]="active === 'login' ? 'nav-link active' : 'nav-link'"
-							id="tab-login" (click)="onLoginTab()">Login</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="btn" [ngClass]="active === 'register' ? 'nav-link active' : 'nav-link'"
-							id="tab-register" (click)="onRegisterTab()">Register</button>
-					</li>
-				</ul>
-			</div>
+<div class="main-content">
+	<div class="container" [ngClass]="{ 'right-panel-active': active === 'register' }">
+	  <!-- Sign-Up Container -->
+	  <div class="form-container sign-up-container">
+		<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+		  <h4>Create Account</h4>
+	  
+		  <input type="text" placeholder="First Name" formControlName="firstName" />
+		  <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+			<small *ngIf="registerForm.get('firstName')?.hasError('required')">First name is required</small>
+			<small *ngIf="registerForm.get('firstName')?.hasError('minlength')">Must be at least 2 characters</small>
+		  </div>
+	  
+		  <input type="text" placeholder="Last Name" formControlName="lastName" />
+		  <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+			<small *ngIf="registerForm.get('lastName')?.hasError('required')">Last name is required</small>
+			<small *ngIf="registerForm.get('lastName')?.hasError('minlength')">Must be at least 2 characters</small>
+		  </div>
+	  
+		  <input type="text" placeholder="Company Name" formControlName="login" />
+		  <div *ngIf="registerForm.get('login')?.invalid && registerForm.get('login')?.touched">
+			<small *ngIf="registerForm.get('login')?.hasError('required')">Company Name is required</small>
+		  </div>
+	  
+		  <input type="password" placeholder="Password" formControlName="password" />
+		  <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+			<small *ngIf="registerForm.get('password')?.hasError('required')">Password is required</small>
+			<small *ngIf="registerForm.get('password')?.hasError('minlength')">Must be at least 8 characters</small>
+		  </div>
+	  
+		  <input type="number" placeholder="Cik" formControlName="id" />
+		  <div *ngIf="registerForm.get('id')?.invalid && registerForm.get('id')?.touched">
+			<small *ngIf="registerForm.get('id')?.hasError('required')">Cik is required</small>
+			<small *ngIf="registerForm.get('id')?.hasError('pattern')">Must be at least 10 numeric,if it's less then 10 put 0 in front </small>
+
+		  </div>
+	  
+		  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+		</form>
+	  </div>
+	  
+	  <!-- Sign-In Container -->
+	  <div class="form-container sign-in-container">
+		<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+		  <h1>Sign in</h1>
+	  
+		  <input type="text" placeholder="Company Name" formControlName="login" />
+		  <div *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched">
+			<small *ngIf="loginForm.get('login')?.hasError('required')">Company Name is required</small>
+		  </div>
+	  
+		  <input type="password" placeholder="Password" formControlName="password" />
+		  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+			<small *ngIf="loginForm.get('password')?.hasError('required')">Password is required</small>
+		  </div>
+	  
+		  <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+		</form>
+	  </div>
+	  
+  
+	  <!-- Overlay Container -->
+	  <div class="overlay-container">
+		<div class="overlay">
+		  <div class="overlay-panel overlay-left">
+			<h1>Welcome </h1>
+			<h2>To keep connected with us please login with your personal info</h2>
+			<button class="ghost" (click)="onLoginTab()">Sign In</button>
+		  </div>
+		  <div class="overlay-panel overlay-right">
+			<h2>Enter your personal details and start your journey with us</h2>
+			<button class="ghost" (click)="onRegisterTab()">Sign Up</button>
+		  </div>
 		</div>
-		<div class="col-right">
-			<div class="login-form">
-
-
-
-				<div class="row justify-content-center">
-					<div class="col-4">
-						<div class="tab-content">
-							<div [ngClass]="active === 'login' ? 'tab-pane fade show active' : 'tab-pane fade'">
-								<form (ngSubmit)="onLogin()">
-									<div class="form-outline mb-4">
-										<input type="text" id="loginName" name="login" class="form-control"
-											[(ngModel)]="login" />
-										<label class="form-label" for="loginName">Username</label>
-									</div>
-									<div class="form-outline mb-4">
-										<input type="password" id="loginPassword" name="password" class="form-control"
-											[(ngModel)]="password" />
-										<label class="form-label" for="loginPassword">Password</label>
-									</div>
-									<button class="btn btn-success" type="submit">Sign in</button>
-								</form>
-							</div>
-
-							<div [ngClass]="active === 'register' ? 'tab-pane fade show active' : 'tab-pane fade'">
-								<form (ngSubmit)="onRegister()">
-									<div class="form-outline mb-4">
-										<input type="text" id="firstName" name="firstName" class="form-control"
-											[(ngModel)]="firstName" />
-										<label class="form-label" for="firstName">First name</label>
-									</div>
-									<div class="form-outline mb-4">
-										<input type="text" id="lastName" name="lastName" class="form-control"
-											[(ngModel)]="lastName" />
-										<label class="form-label" for="lastName">Last name</label>
-									</div>
-									<!--  <div class="form-outline mb-4">
-						<input type="text" id="companyname" name="companyname" class="form-control" [(ngModel)]="companyname" />
-						<label class="form-label" for="companyname">company name</label>
-				
-					  <div class="form-outline mb-4">
-						<input type="text" id="ticker" name="ticker" class="form-control" [(ngModel)]="ticker" />
-						<label class="form-label" for="ticker">ticker</label>
-					  </div>-->
-							<div class="form-outline mb-4">
-								<input type="number" id="cik" name="cik" class="form-control" [(ngModel)]="id" />
-								<label class="form-label" for="cik">cik</label>
-							</div>
-
-							<div class="form-outline mb-4">
-								<input type="text" id="login" name="login" class="form-control" [(ngModel)]="login" />
-								<label class="form-label" for="login">Username</label>
-							</div>
-							<div class="form-outline mb-4">
-								<input type="password" id="registerPassword" name="password" class="form-control"
-									[(ngModel)]="password" />
-								<label class="form-label" for="registerPassword">Password</label>
-							</div>
-							<button class="btn btn-success" type="submit">Register</button>
-							</form>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-
-
-		</div>
+	  </div>
 	</div>
-</div>
-
-</div>
+  </div>
+  

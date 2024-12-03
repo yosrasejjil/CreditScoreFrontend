@@ -24,6 +24,9 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.4.6",
+    "chartjs-gauge": "^0.3.0",
+    "d3": "^7.9.0",
+    "glightbox": "^3.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -33,6 +36,7 @@
     "@angular/cli": "~16.0.0",
     "@angular/compiler-cli": "^16.0.0",
     "@types/aos": "^3.0.7",
+    "@types/d3": "^7.4.3",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

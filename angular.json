@@ -32,12 +32,15 @@
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/aos/dist/aos.css",
+              "src/assets/vendor/aos/aos.css",
+              "node_modules/glightbox/dist/css/glightbox.min.css",
 
               "src/styles.css"
             ],
             "scripts": [    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-            "node_modules/aos/dist/aos.js"
+            "src/assets/vendor/aos/aos.js",
+            "src/assets/vendor/glightbox/js/glightbox.min.js"
+
           ]
           },
           "configurations": {

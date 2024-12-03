@@ -1,0 +1,84 @@
+/* Dialog Container */
+.mat-dialog-container {
+    border-radius: 15px; /* Rounded edges for a sleek look */
+    padding: 40px; /* Increased padding for spaciousness */
+    background-color: #fffbeb; /* Light yellow background for an alert feel */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Prominent shadow for depth */
+    text-align: center; /* Center-align text and buttons */
+    border: 2px solid #ffd700; /* Gold border for an alert look */
+    max-width: 600px; /* Larger width */
+    margin: auto;
+  }
+  
+  /* Title */
+  h2 {
+    font-size: 32px; /* Larger title for prominence */
+    font-weight: bold;
+    color: #ff3c00; /* Warm orange for a striking alert title */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Makes the title stand out */
+  }
+  
+  /* Content */
+  p {
+    font-size: 20px; /* Larger font size for readability */
+    color: #555; /* Neutral gray for secondary text */
+    margin-bottom: 30px;
+    line-height: 1.8; /* Increased line spacing */
+  }
+  
+  /* Actions */
+  .dialog-actions {
+    display: flex;
+    justify-content: center; /* Center-align buttons */
+    gap: 20px; /* Increased space between buttons */
+  }
+  
+  /* Buttons */
+  button {
+    border-radius: 30px; /* Larger rounded corners */
+    padding: 16px 40px; /* Increased button size */
+    font-size: 18px; /* Larger font size for buttons */
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none; /* No border for cleaner look */
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Cancel Button */
+  .cancel-btn {
+    background-color: #f0f0f0; /* Soft gray background */
+    color: #333; /* Neutral text color */
+  }
+  
+  .cancel-btn:hover {
+    background-color: #e5e5e5; /* Slightly darker gray on hover */
+    transform: scale(1.05); /* Small scale effect on hover */
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    background-color: #ff2019; /* Warm orange for submit button */
+    color: white; /* White text for contrast */
+  }
+  
+  .submit-btn:hover {
+    background-color: #e43737; /* Slightly brighter orange on hover */
+    transform: scale(1.05); /* Small scale effect on hover */
+  }
+  
+  /* Alert-like Icon (Optional) */
+  .alert-icon {
+    font-size: 50px; /* Larger icon for better visibility */
+    color: #d30700; /* Same as the title for consistency */
+    margin-bottom: 20px;
+  }
+  
+  /* Extra Spacing */
+  .dialog-content {
+    padding: 20px 30px;
+    max-width: 600px; /* Larger width for the content */
+    margin: auto;
+  }
+  

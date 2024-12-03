@@ -27,7 +27,7 @@
               <ng-container matColumnDef="prediction">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Prediction</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.prediction === 1 ? 'Bankrupt' : element.prediction === 0 ? 'Stable' : 'Unknown' }}
+                  {{ getPredictionLabel(element.score) }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="score">

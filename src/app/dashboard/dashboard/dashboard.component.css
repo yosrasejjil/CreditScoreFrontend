@@ -1,0 +1,42 @@
+.dashboard {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .metrics {
+    margin-bottom: 20px;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .gauge-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  #gaugeLegend {
+    margin-left: 20px; /* Adjust as needed for spacing */
+  }
+  
+  .gauge-legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .rating-display {
+    font-size: 1.5em; /* Slightly larger font size */
+    color: #333; /* Dark gray for a softer look */
+    font-weight: 300; /* Lighter weight for the main text */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .rating-display .rating-label {
+    font-weight: 700; /* Bold for emphasis on the rating */
+    color: #170e51; /* Green for positive, adjust as needed */
+    font-size: 1.75em; /* Slightly larger to stand out */
+  }
+  

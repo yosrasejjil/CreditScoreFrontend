@@ -1,0 +1,12 @@
+.nav-header {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    height: 100px;          /* Set a height for the navigation header */
+  }
+  
+  .brand-logo img {
+    display: block;
+    margin: 0 auto; /* Ensure no extra margins affect centering */
+  }
+  
